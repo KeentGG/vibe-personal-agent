@@ -36,7 +36,7 @@ A `MistralSandbox` needs the `cloud_user` workspace role; without it, run locall
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `MISTRAL_API_KEY` | required locally | API key. On a managed deployment the worker's service account is used instead. |
+| `MISTRAL_API_KEY` | required locally | API key. On a managed deployment the session user's identity is used instead, so local and deployed runs share the same memory library. |
 | `PERSONAL_ASSISTANT_LIBRARY_ID` | — | Memory library id; skips name lookup. |
 | `PERSONAL_ASSISTANT_LIBRARY_NAME` | `personal-assistant-memory` | Memory library name (created on first use if missing). |
 | `PERSONAL_ASSISTANT_MODEL` | `mistral-large-4` | The agent's model. |

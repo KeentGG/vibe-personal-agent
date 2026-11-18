@@ -31,8 +31,9 @@ class StoreError(RuntimeError):
 
 
 def get_client() -> Any:
-    """A Mistral client for the process: the API key locally, the deployment's
-    service account on a Mistral-managed worker."""
+    """A Mistral client for the process: the API key locally; on a Mistral-managed
+    worker, the session user's identity (the deployment is hardened and libraries
+    reject service-account calls without a user id)."""
     api_key = os.environ.get("MISTRAL_API_KEY") or os.environ.get("MISTRAL_CLIENT_API_KEY")
     if api_key:
         from mistralai.client import Mistral
@@ -41,7 +42,7 @@ def get_client() -> Any:
     from mistralai.workflows.client import get_mistral_client
     from mistralai.workflows.core.auth import RunAs
 
-    return get_mistral_client(run_as=RunAs.DEPLOYMENT)
+    return get_mistral_client(run_as=RunAs.AUTO)
 
 
 class LibraryStore:
