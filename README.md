@@ -9,7 +9,7 @@ A conversational personal assistant built with the [Mistral Agents SDK](https://
 | Conversation | Agent sessions; once deployed (`agents deploy`), Mistral stores each session, so chats persist across reconnects. Long sessions auto-compact. |
 | Long-term memory | `remember` / `recall` / `list_memories` / `forget` tools backed by a Studio **library** (`personal-assistant-memory`): one markdown document per memory. |
 | Files | `save_file` / `list_saved_files` / `read_saved_file` store text files as documents in the same library. In-session scratch files use the sandbox file tools (`read_file`, `write_file`, `edit`, `bash`). |
-| Knowledge recall | `recall` runs RAG over the library via the `document_library` conversation tool; the `web_search` connector covers current facts; `all_connectors()` mounts the user's connected sources (Notion, Gmail, Slack, GitHub, calendars, ...). |
+| Knowledge recall | `recall` runs RAG over the library via the `document_library` conversation tool; the `web_search` tool covers current facts; `all_connectors()` mounts the user's connected sources (Notion, Gmail, Slack, GitHub, calendars, ...). |
 
 The memory protocol is in the agent's instructions (`main.py`): recall before answering anything personal, remember what is worth keeping.
 
